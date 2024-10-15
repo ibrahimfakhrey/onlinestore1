@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="text-center text-xl">Welcome to My Online Store</h2>
+{% if current_user .role=='seller' %}
+<a href="/add_product"> add new_product</a>
+{% endif %}
+<div class="flex flex-wrap justify-center mt-8">
+    {% for i in products %}
+    <div class="max-w-sm rounded overflow-hidden shadow-lg m-4">
+        <img class="w-full" src="{{i.image_link}}" alt="Product 1">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">{{i.name}}</div>
+            <p class="text-gray-700 text-base">
+                ${{i.price}}
+            </p>
+            <div class="flex justify-between mt-4">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    View
+                </button>
+                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+    </div>
+
+{% endblock %}
